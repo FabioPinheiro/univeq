@@ -61,7 +61,10 @@ object RuntimeTest extends TestSuite {
       "class_" - assertPass[Class[_]](clsI, clsL)
     }
 
-    "derived" - assertPass(Wrap(2), Wrap(3))
+    "derived" - {
+      "caseClass" - assertPass(Wrap(2), Wrap(3))
+      "scalaPredefMap" - assertPass(Map("A" -> 1), Map("B" -> 2))
+    }
 
     "ops" - {
       compileError("3 ==* false")
